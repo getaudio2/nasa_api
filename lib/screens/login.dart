@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_api/screens/detail.dart';
 
-void main() => runApp(const NasaApp());
+void main() {
+ runApp(MaterialApp(
+   home: NasaApp(),
+ ));
+}
 
 class NasaApp extends StatelessWidget {
   const NasaApp({Key? key}) : super(key: key);
