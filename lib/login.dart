@@ -40,6 +40,13 @@ class NasaApp extends StatelessWidget {
                     decoration: const InputDecoration(labelText: "Contrasenya"),
                     obscureText: true,
                   ),
+                  SizedBox(height: 60),
+                  ElevatedButton(
+                    child: const Text('Login'),
+                    onPressed: () {
+
+                    },
+                  ),
                 ],
               ),
             ),
