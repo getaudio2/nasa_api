@@ -24,7 +24,7 @@ class Detail extends StatelessWidget {
               width: double.infinity,
               height: size.height * 0.5,
               decoration: BoxDecoration(
-                image: new DecorationImage(image: NetworkImage('https://apod.nasa.gov/apod/image/2202/Chamaeleon_RobertEder.jpg'),
+                image: new DecorationImage(image: NetworkImage('https://apod.nasa.gov/apod/image/2202/Chamaeleon_RobertEder.jpg'), // Space image
                 fit: BoxFit.cover)
               ),
             ),
