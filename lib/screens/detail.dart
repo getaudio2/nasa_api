@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_api/screens/login.dart';
 
 class Detail extends StatelessWidget {
   const Detail({Key? key}) : super(key: key);
@@ -9,7 +10,12 @@ class Detail extends StatelessWidget {
       title: title,
       home: Scaffold(
         body: Container(
-          child: Text('hola'),
+          child: ElevatedButton(
+            child: const Text('Go back'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
     );
