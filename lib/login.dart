@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_api/screens/detail.dart';
 
 void main() => runApp(const NasaApp());
 
@@ -44,7 +45,10 @@ class NasaApp extends StatelessWidget {
                   ElevatedButton(
                     child: const Text('Login'),
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Detail()),
+                      );
                     },
                   ),
                 ],
