@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nasa_api/screens/detail.dart';
 
 void main() {
- runApp(MaterialApp(
+ runApp(const MaterialApp(
    home: NasaApp(),
  ));
 }
