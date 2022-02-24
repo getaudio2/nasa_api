@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_api/fetchData.dart';
 import 'package:nasa_api/screens/login.dart';
 
 class Detail extends StatelessWidget {

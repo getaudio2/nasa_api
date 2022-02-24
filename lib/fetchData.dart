@@ -23,15 +23,7 @@ class _fetchDataState extends State<fetchData> {
             future: apiService.getData(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                /*return apiImage(snapshot.data.copyright, 
-                                snapshot.data.date, 
-                                snapshot.data.explanation,
-                                snapshot.data.hdurl,
-                                snapshot.data.media_type,
-                                snapshot.data.service_version,
-                                snapshot.data.title,
-                                snapshot.data.url);*/
-                  //return Text(snapshot.data!.title);
+                return Text(snapshot.data!.title);
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }else{
