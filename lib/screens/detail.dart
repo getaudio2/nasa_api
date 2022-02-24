@@ -30,11 +30,24 @@ class Detail extends StatelessWidget {
                       fit: BoxFit.cover)),
             ),
             Container(
+              margin: const EdgeInsets.only(top: 275),
               width: double.infinity,
-              height: 200,
+              height: (size.height * 0.5) + 275,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(50)),
-
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  children: <Widget>[
+                    Text("title"),
+                    SizedBox(height: 20),
+                    Text("autor"),
+                    Text("data"),
+                    SizedBox(height: 20),
+                    Text("descripció"),
+                  ],
+                ),
+              ),
             ),
           ]),
         ),

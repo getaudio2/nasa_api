@@ -32,6 +32,5 @@ class _fetchDataState extends State<fetchData> {
         ),
       ),
     );
-
   }
 }
