@@ -3,6 +3,7 @@ import 'package:nasa_api/fetchData.dart';
 import 'package:nasa_api/screens/login.dart';
 import 'package:nasa_api/apiService/ApiService.dart';
 import 'package:nasa_api/model/apod.dart';
+import 'package:nasa_api/apiImage.dart';
 
 class Detail extends StatelessWidget {
   const Detail({Key? key}) : super(key: key);
@@ -48,7 +49,15 @@ class Detail extends StatelessWidget {
                       future: apiService.getData(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
-                          return Text(snapshot.data!.title);
+                          //return Text(snapshot.data!.title);
+                          return apiImage(snapshot.data!.copyright,
+                                snapshot.data!.date,
+                                snapshot.data!.explanation,
+                                snapshot.data!.hdurl,
+                                snapshot.data!.media_type,
+                                snapshot.data!.service_version,
+                                snapshot.data!.title,
+                                snapshot.data!.url);
                         } else if (snapshot.hasError) {
                           return Text('${snapshot.error}');
                         } else {
