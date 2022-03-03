@@ -6,7 +6,23 @@ import 'package:nasa_api/model/apod.dart';
 import 'package:nasa_api/apiImage.dart';
 
 class Detail extends StatelessWidget {
-  const Detail({Key? key}) : super(key: key);
+  const Detail({Key? key, required this.copyright,
+                          required this.date,
+                          required this.explanation,
+                          required this.hdurl,
+                          required this.media_type,
+                          required this.service_version,
+                          required this.aTitle,
+                          required this.url}) : super(key: key);
+
+  final String copyright;
+  final String date;
+  final String explanation;
+  final String hdurl;
+  final String media_type;
+  final String service_version;
+  final String aTitle;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +47,9 @@ class Detail extends StatelessWidget {
               height: size.height * 0.5,
               decoration: BoxDecoration(
                   image: new DecorationImage(
-                      image: NetworkImage(
-                          'https://apod.nasa.gov/apod/image/2202/Chamaeleon_RobertEder.jpg'), // Space image
+                      /*image: NetworkImage(
+                          'https://apod.nasa.gov/apod/image/2202/Chamaeleon_RobertEder.jpg'),*/ // Space image
+                        image: NetworkImage(url),
                       fit: BoxFit.cover)),
             ),
             Container(
@@ -45,7 +62,7 @@ class Detail extends StatelessWidget {
                 padding: const EdgeInsets.all(30.0),
                 child: Column(
                   children: <Widget>[
-                    FutureBuilder<Apod>(
+                    /*FutureBuilder<Apod>(
                       future: apiService.getData(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
@@ -64,13 +81,13 @@ class Detail extends StatelessWidget {
                           return const CircularProgressIndicator();
                         }
                       },
-                    ),
-                    Text("title"),
+                    ),*/
+                    Text(aTitle),
                     SizedBox(height: 20),
-                    Text("autor"),
-                    Text("data"),
+                    Text(copyright),
+                    Text(date),
                     SizedBox(height: 20),
-                    Text("descripció"),
+                    Text(explanation),
                   ],
                 ),
               ),
