@@ -82,10 +82,25 @@ class Detail extends StatelessWidget {
                         }
                       },
                     ),*/
-                    Text(aTitle),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        aTitle,
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
                     SizedBox(height: 20),
-                    Text(copyright),
-                    Text(date),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        copyright,
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(date),
+                    ),
                     SizedBox(height: 20),
                     Text(explanation),
                   ],
