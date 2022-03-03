@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_api/fetchData.dart';
 import 'package:nasa_api/screens/login.dart';
+import 'package:nasa_api/apiService/ApiService.dart';
+import 'package:nasa_api/model/apod.dart';
 
 class Detail extends StatelessWidget {
   const Detail({Key? key}) : super(key: key);
@@ -9,6 +11,7 @@ class Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var title = 'Nasa api';
+    final ApiService apiService = ApiService();
     return MaterialApp(
       title: title,
       home: Scaffold(
@@ -41,6 +44,18 @@ class Detail extends StatelessWidget {
                 padding: const EdgeInsets.all(30.0),
                 child: Column(
                   children: <Widget>[
+                    FutureBuilder<Apod>(
+                      future: apiService.getData(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(snapshot.data!.title);
+                        } else if (snapshot.hasError) {
+                          return Text('${snapshot.error}');
+                        } else {
+                          return const CircularProgressIndicator();
+                        }
+                      },
+                    ),
                     Text("title"),
                     SizedBox(height: 20),
                     Text("autor"),

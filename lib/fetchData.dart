@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nasa_api/apiService/ApiService.dart';
 import 'package:nasa_api/model/apod.dart';
 import 'package:nasa_api/apiImage.dart';
-import 'package:nasa_api/screens/detail.dart';
 
 class fetchData extends StatefulWidget {
   const fetchData({ Key? key }) : super(key: key);
@@ -23,7 +22,15 @@ class _fetchDataState extends State<fetchData> {
             future: apiService.getData(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
+                //return Text(snapshot.data!.title);
+                return apiImage(snapshot.data!.copyright,
+                                snapshot.data!.date,
+                                snapshot.data!.explanation,
+                                snapshot.data!.hdurl,
+                                snapshot.data!.media_type,
+                                snapshot.data!.service_version,
+                                snapshot.data!.title,
+                                snapshot.data!.url);
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }else{
