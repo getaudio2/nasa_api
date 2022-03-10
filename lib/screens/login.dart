@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_api/fetchData.dart';
 import 'package:nasa_api/screens/detail.dart';
+import 'package:nasa_api/fetchList.dart';
 
 void main() {
  runApp(const MaterialApp(
@@ -52,7 +53,7 @@ class NasaApp extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const fetchData()),
+                        MaterialPageRoute(builder: (context) => const fetchList()),
                       );
                     },
                   ),

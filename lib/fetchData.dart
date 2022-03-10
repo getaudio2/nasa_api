@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_api/apiService/ApiService.dart';
 import 'package:nasa_api/model/apod.dart';
-import 'package:nasa_api/apiImage.dart';
 import 'package:nasa_api/screens/detail.dart';
 
 class fetchData extends StatefulWidget {
