@@ -24,14 +24,6 @@ class _fetchDataState extends State<fetchData> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 //return Text(snapshot.data!.title);
-                /*return Detail(snapshot.data!.copyright,
-                                snapshot.data!.date,
-                                snapshot.data!.explanation,
-                                snapshot.data!.hdurl,
-                                snapshot.data!.media_type,
-                                snapshot.data!.service_version,
-                                snapshot.data!.title,
-                                snapshot.data!.url);*/
                   return Detail(copyright: snapshot.data!.copyright,
                                 date: snapshot.data!.date,
                                 explanation: snapshot.data!.explanation,
