@@ -3,12 +3,11 @@ import 'package:nasa_api/fetchData.dart';
 import 'package:nasa_api/screens/login.dart';
 import 'package:nasa_api/apiService/ApiService.dart';
 import 'package:nasa_api/model/apod.dart';
-import 'package:http/http.dart' as http;
-import 'package:share_plus/share_plus.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:path/path.dart' as path;
 import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:share_plus/share_plus.dart';
 
 
 class Detail extends StatelessWidget {
@@ -104,7 +103,7 @@ class Detail extends StatelessWidget {
                             final response = await http.get(uri);
                             final bytes = response.bodyBytes;
 
-                            Directory temp = await getTemporaryDirectory();
+                            Directory temp = await path_provider.getTemporaryDirectory();
                             final path = '${temp.path}/image.jpg';
                             File(path).writeAsBytesSync(bytes);
 
