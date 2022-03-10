@@ -20,11 +20,6 @@ class Llistat extends StatelessWidget {
             onTap: () {
               debugPrint('Card tapped.');
             },
-            /*child: const SizedBox(
-              width: 300,
-              height: 100,
-              child: Text('A card that can be tapped'),
-            ),*/
             child: ListTile(
               leading: Image.network(apodList[index].url),
               title: Text(apodList[index].title),
@@ -32,7 +27,6 @@ class Llistat extends StatelessWidget {
             ),
           ),
         );
-        //return Image.network(apodList[index].url);
       },
     );
   }

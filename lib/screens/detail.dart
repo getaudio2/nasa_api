@@ -3,6 +3,13 @@ import 'package:nasa_api/fetchData.dart';
 import 'package:nasa_api/screens/login.dart';
 import 'package:nasa_api/apiService/ApiService.dart';
 import 'package:nasa_api/model/apod.dart';
+import 'package:http/http.dart' as http;
+import 'package:share_plus/share_plus.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:path/path.dart' as path;
+import 'dart:io';
+
 
 class Detail extends StatelessWidget {
   const Detail({Key? key, required this.copyright,
@@ -61,12 +68,51 @@ class Detail extends StatelessWidget {
                 padding: const EdgeInsets.all(30.0),
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        aTitle,
-                        style: TextStyle(fontSize: 20),
-                      ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            aTitle,
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.download),
+                          onPressed: () async {
+                            final response = await http.get(Uri.parse(url));
+
+                            // Get the image name
+                            final imageName = path.basename(url);
+                            // Get the document directory path
+                            final appDir = await path_provider
+                                .getApplicationDocumentsDirectory();
+
+                            // This is the saved image path
+                            // You can use it to display the saved image later
+                            final localPath = path.join(appDir.path, imageName);
+
+                            // Downloading
+                            final imageFile = File(localPath);
+                            await imageFile.writeAsBytes(response.bodyBytes);
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.share),
+                          onPressed: () async {
+                            final uri = Uri.parse(url);
+                            final response = await http.get(uri);
+                            final bytes = response.bodyBytes;
+
+                            Directory temp = await getTemporaryDirectory();
+                            final path = '${temp.path}/image.jpg';
+                            File(path).writeAsBytesSync(bytes);
+
+                            await Share.shareFiles([path],
+                                text: aTitle + "\n" + date + "\n" + url);
+                          },
+                        ),
+                      ],
                     ),
                     SizedBox(height: 20),
                     Container(

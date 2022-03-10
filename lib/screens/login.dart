@@ -53,7 +53,7 @@ class NasaApp extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const fetchList()),
+                        MaterialPageRoute(builder: (context) => const fetchData()),
                       );
                     },
                   ),
