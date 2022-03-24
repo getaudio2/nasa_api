@@ -31,6 +31,8 @@ class Detail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double sWidth = MediaQuery. of(context). size. width ;
+    double sHeight = MediaQuery. of(context). size. height;
     var size = MediaQuery.of(context).size;
     var title = 'Nasa api';
     final ApiService apiService = ApiService();
@@ -48,7 +50,7 @@ class Detail extends StatelessWidget {
               ),
             ),
             Container(
-              width: double.infinity,
+              width: sWidth,
               height: size.height * 0.5,
               decoration: BoxDecoration(
                   image: new DecorationImage(
@@ -59,7 +61,7 @@ class Detail extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(top: 275),
-              width: double.infinity,
+              width: sWidth,
               height: (size.height * 0.5) + 275,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(50)),
@@ -90,10 +92,13 @@ class Detail extends StatelessWidget {
                             // This is the saved image path
                             // You can use it to display the saved image later
                             final localPath = path.join(appDir.path, imageName);
+                            print(localPath + " <- esta es la ruta");
 
                             // Downloading
                             final imageFile = File(localPath);
                             await imageFile.writeAsBytes(response.bodyBytes);
+
+                            
                           },
                         ),
                         IconButton(
