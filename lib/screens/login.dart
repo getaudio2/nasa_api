@@ -19,11 +19,13 @@ class NasaApp extends StatefulWidget {
 
 class _NasaAppState extends State<NasaApp> {
   final ApiService apiService = ApiService();
-  var _user = TextEditingController();
-  var _pass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var _user = TextEditingController();
+    _user.text="paulmaigua";
+    var _pass = TextEditingController();
+    _pass.text="123456";
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     var title = 'Nasa api';

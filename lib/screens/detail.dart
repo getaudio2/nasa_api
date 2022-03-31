@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:share_plus/share_plus.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Detail extends StatelessWidget {
   const Detail({Key? key, required this.copyright,
@@ -33,6 +33,7 @@ class Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     double sWidth = MediaQuery. of(context). size. width ;
     double sHeight = MediaQuery. of(context). size. height;
+    String userId = getId();
     var size = MediaQuery.of(context).size;
     var title = 'Nasa api';
     final ApiService apiService = ApiService();
@@ -132,6 +133,7 @@ class Detail extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(explanation),
+                    Text("UserID: " + userId),
                   ],
                 ),
               ),
@@ -142,3 +144,10 @@ class Detail extends StatelessWidget {
     );
   }
 }
+
+getId() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? id = prefs.getString('id');
+    return id.toString();
+  }
+

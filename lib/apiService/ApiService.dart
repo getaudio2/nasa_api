@@ -4,9 +4,9 @@ import 'package:nasa_api/model/apod.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
- 
   Future<Apod> getData() async {
     var url = 'api.nasa.gov';
     var urlExtension = '/planetary/apod';
@@ -57,14 +57,15 @@ class ApiService {
       } else if (jsondata["success"]) {
           showToast(jsondata["message"]);
           isLogin = true;
+
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('id', jsondata["id"]);
       }
     } else {
       showToast("Error de connexió");
       isLogin = false;
     }
 
-    print("RESPONSE: " + response.statusCode.toString() + " isLogin: " + isLogin.toString());
-    print("body: " + response.body.toString() + " headers: " + response.headers.toString());
     return isLogin;
   }
 
