@@ -33,7 +33,6 @@ class Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     double sWidth = MediaQuery. of(context). size. width ;
     double sHeight = MediaQuery. of(context). size. height;
-    String userId = getId();
     var size = MediaQuery.of(context).size;
     var title = 'Nasa api';
     final ApiService apiService = ApiService();
@@ -55,8 +54,6 @@ class Detail extends StatelessWidget {
               height: size.height * 0.5,
               decoration: BoxDecoration(
                   image: new DecorationImage(
-                      /*image: NetworkImage(
-                          'https://apod.nasa.gov/apod/image/2202/Chamaeleon_RobertEder.jpg'),*/ // Space image
                         image: NetworkImage(url),
                       fit: BoxFit.cover)),
             ),
@@ -133,7 +130,6 @@ class Detail extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(explanation),
-                    Text("UserID: " + userId),
                   ],
                 ),
               ),
