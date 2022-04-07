@@ -60,6 +60,8 @@ class ApiService {
 
           final prefs = await SharedPreferences.getInstance();
           await prefs.setString('id', jsondata["id"]);
+
+          print("LOGIN RESPONSE BODY: " + response.body);
       }
     } else {
       showToast("Error de connexió");
@@ -94,6 +96,33 @@ class ApiService {
           showToast(jsondata["message"]);
           print("ADDED FAV SUCCESS");
           print("message: " + jsondata["message"]);
+          print("ADDFAV RESPONSE BODY: " + response.body);
+      }
+      print("DEFAULT MESSAGE");
+    } else {
+      showToast("Error de connexió");
+      print("ERROR DE CONEXIÓ");
+    }
+
+    return true;
+  }
+
+    Future<bool> getFav(String idUser) async {
+    var url = "http://sundarabcn.com/flutter/readData.php";
+ 
+    var response = await http
+        .post(Uri.parse(url), body: {'idUser': idUser});
+ 
+    if (response.statusCode == 200) {
+      var jsondata = json.decode(response.body);
+      if (jsondata["error"] == 1) {
+        showToast(jsondata["message"]);
+        print("GET FAV ERROR");
+      } else if (jsondata["success"] == 1) {
+          showToast(jsondata["message"]);
+          print("GET FAV SUCCESS");
+          print("message: " + jsondata["message"]);
+          print("ADDFAV RESPONSE BODY: " + response.body);
       }
       print("DEFAULT MESSAGE");
     } else {

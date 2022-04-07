@@ -95,6 +95,11 @@ getId() async {
                                 .then((result) {
                               print("ADDFAV RETURNS: " + result.toString());
                             });
+                            apiService
+                                .getFav(userId)
+                                .then((result) {
+                              print("GETFAV RETURNS: " + result.toString());
+                            });
                           },
                         ),
                         IconButton(
