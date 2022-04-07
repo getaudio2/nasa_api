@@ -91,13 +91,13 @@ class ApiService {
   }
 
     Future<bool> getFav(String idUser) async {
-    var url = "http://sundarabcn.com/flutter/readData.php";
- 
+    var url = "http://sundarabcn.com/flutter/readData.php?idUser=____";
+
     var response = await http
         .post(Uri.parse(url), body: {'idUser': idUser});
- 
+
     if (response.statusCode == 200) {
-      print("getFav response body:    ");
+      print("getFav response:    ");
       print(response.body);
       var jsondata = json.decode(response.body);
       if (jsondata["error"] == 1) {

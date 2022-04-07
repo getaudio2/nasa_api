@@ -85,9 +85,7 @@ getId() async {
                         IconButton(
                           icon: const Icon(Icons.favorite),
                           onPressed: () async {
-                              print("Fav button pressed");
-                              String userId = await getId();
-                              print("UserId: " + userId);
+                            String userId = await getId();
 
                             apiService
                                 .addFav(userId, date, explanation, aTitle,
