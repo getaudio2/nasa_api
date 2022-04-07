@@ -61,7 +61,6 @@ class ApiService {
           final prefs = await SharedPreferences.getInstance();
           await prefs.setString('id', jsondata["id"]);
 
-          print("LOGIN RESPONSE BODY: " + response.body);
       }
     } else {
       showToast("Error de connexió");
@@ -73,16 +72,6 @@ class ApiService {
 
   Future<bool> addFav(String idUser, String date, String explanation, String aTitle, String urlApod, String copyright) async {
     var url = "http://www.sundarabcn.com/flutter/addData.php";
-
-    print("------");
-    print("DESDE ADDFAV:");
-    print(idUser);
-    print(date);
-    print(explanation);
-    print(aTitle);
-    print(urlApod);
-    print(copyright);
-    print("-------");
  
     var response = await http
         .post(Uri.parse(url), body: {'idUser': idUser, 'date': date, 'explanation': explanation, 'title': aTitle, 'url': urlApod, 'copyright': copyright});
@@ -91,17 +80,11 @@ class ApiService {
       var jsondata = json.decode(response.body);
       if (jsondata["error"] == 1) {
         showToast(jsondata["message"]);
-        print("ADDED FAV ERROR");
       } else if (jsondata["success"] == 1) {
           showToast(jsondata["message"]);
-          print("ADDED FAV SUCCESS");
-          print("message: " + jsondata["message"]);
-          print("ADDFAV RESPONSE BODY: " + response.body);
       }
-      print("DEFAULT MESSAGE");
     } else {
       showToast("Error de connexió");
-      print("ERROR DE CONEXIÓ");
     }
 
     return true;
@@ -114,6 +97,8 @@ class ApiService {
         .post(Uri.parse(url), body: {'idUser': idUser});
  
     if (response.statusCode == 200) {
+      print("getFav response body:    ");
+      print(response.body);
       var jsondata = json.decode(response.body);
       if (jsondata["error"] == 1) {
         showToast(jsondata["message"]);
