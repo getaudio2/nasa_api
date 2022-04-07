@@ -29,6 +29,12 @@ class Detail extends StatelessWidget {
   final String aTitle;
   final String url;
 
+getId() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? id = prefs.getString('id');
+    return id.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     double sWidth = MediaQuery. of(context). size. width ;
@@ -75,6 +81,14 @@ class Detail extends StatelessWidget {
                             aTitle,
                             style: TextStyle(fontSize: 20),
                           ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.favorite),
+                          onPressed: () async {
+                              print("Fav button pressed");
+                              print(await getId());
+
+                          },
                         ),
                         IconButton(
                           icon: const Icon(Icons.download),
@@ -141,9 +155,5 @@ class Detail extends StatelessWidget {
   }
 }
 
-getId() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? id = prefs.getString('id');
-    return id.toString();
-  }
+
 

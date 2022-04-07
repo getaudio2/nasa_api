@@ -69,6 +69,33 @@ class ApiService {
     return isLogin;
   }
 
+  Future<bool> login(String user, String pass) async {
+    var url = "http://www.sundarabcn.com/flutter/login.php";
+    bool isLogin = false;
+ 
+    var response = await http
+        .post(Uri.parse(url), body: {'username': user, 'password': pass});
+ 
+    if (response.statusCode == 200) {
+      var jsondata = json.decode(response.body);
+      if (jsondata["error"]) {
+        showToast(jsondata["message"]);
+        isLogin = false;
+      } else if (jsondata["success"]) {
+          showToast(jsondata["message"]);
+          isLogin = true;
+
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('id', jsondata["id"]);
+      }
+    } else {
+      showToast("Error de connexió");
+      isLogin = false;
+    }
+
+    return isLogin;
+  }
+
   showToast(String message) {
     Fluttertoast.showToast(
         msg: message,
