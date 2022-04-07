@@ -97,22 +97,17 @@ class ApiService {
         .post(Uri.parse(url), body: {'idUser': idUser});
 
     if (response.statusCode == 200) {
-      print("getFav response:    ");
-      print(response.body);
       var jsondata = json.decode(response.body);
       if (jsondata["error"] == 1) {
         showToast(jsondata["message"]);
-        print("GET FAV ERROR");
       } else if (jsondata["success"] == 1) {
           showToast(jsondata["message"]);
           print("GET FAV SUCCESS");
           print("message: " + jsondata["message"]);
           print("ADDFAV RESPONSE BODY: " + response.body);
       }
-      print("DEFAULT MESSAGE");
     } else {
       showToast("Error de connexió");
-      print("ERROR DE CONEXIÓ");
     }
 
     return true;
