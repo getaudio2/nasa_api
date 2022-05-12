@@ -90,7 +90,7 @@ class ApiService {
     return true;
   }
 
-    Future<bool> getFav(String idUser) async {
+  Future<bool> getFav(String idUser) async {
     var url = "http://sundarabcn.com/flutter/readData.php?idUser=____";
 
     var response = await http
@@ -98,14 +98,16 @@ class ApiService {
 
     if (response.statusCode == 200) {
       var jsondata = json.decode(response.body);
-      if (jsondata["error"] == 1) {
+
+      print("aaaa ->" + jsondata["error"]);
+      /*if (jsondata["error"] == 1) {
         showToast(jsondata["message"]);
       } else if (jsondata["success"] == 1) {
           showToast(jsondata["message"]);
           print("GET FAV SUCCESS");
           print("message: " + jsondata["message"]);
           print("ADDFAV RESPONSE BODY: " + response.body);
-      }
+      }*/
     } else {
       showToast("Error de connexió");
     }
